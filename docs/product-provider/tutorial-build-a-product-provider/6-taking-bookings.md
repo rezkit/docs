@@ -120,3 +120,5 @@ app.post('/reservations/cancel', (req, res) => {
     res.status(202).json({ referrence });
 });
 ```
+
+Next, we'll tell RezKit how to access all the API methods we've built...
