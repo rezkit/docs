@@ -30,7 +30,7 @@ yarn add express
 
 ## Step 2. Initialize a basic API
 
-```javascript server.js
+```javascript title=server.js
 const Express = require('express'),
       app = Express(),
       port = process.env.PORT || 3000;

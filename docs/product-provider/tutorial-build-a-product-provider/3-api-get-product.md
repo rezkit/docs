@@ -18,7 +18,7 @@ RezKit how our URLs work later in this guide.
 
 Here's the code we need to build this method:
 
-```javascript server.js
+```javascript title=server.js
 const products = require('./data/products.json');
 
 app.get('/products/{id}', (req, res) => {

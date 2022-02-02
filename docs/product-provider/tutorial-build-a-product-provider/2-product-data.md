@@ -24,7 +24,7 @@ In a real provider, the data must persist between restarts using a database or o
 The schema for product data is available [here](http://schema.travelzen.app/1.0/product-provider/package).
 There are many more optional fields available in the package schema, but for now we'll just fill in the basics.
 
-```json data/products.json
+```json title=data/products.json
 [
     {
         "id": "product_1",

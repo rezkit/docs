@@ -13,7 +13,7 @@ We'll put our search at `/products/search` and implement the basic search parame
 
 We'll also implement sorting and pagination so our results show up in the right place.
 
-```javascript
+```javascript title=server.js
 app.get('/products/search', (req, res) => {
     const filters = req.query;
     
