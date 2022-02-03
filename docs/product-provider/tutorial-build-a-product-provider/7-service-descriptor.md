@@ -13,10 +13,10 @@ This document is known as the **Service Descriptor**.
 The first step is to build the service descriptor itself, which is just a JSON document.
 For a full list of the options available, see the [JSON Schema][schema]
 
-We'll define this in a JavaScript file so we can include dynamic sections and comments...
+We'll define this in a JavaScript file, that way we can include dynamic sections and comments...
 
 ```javascript title=service.js
-export default {
+module.exports = {
     name: "My Product Provider", // The name of your provider...
     version: "1.0", // The version of the product provider specification targeted. (1.0)
     operations: {

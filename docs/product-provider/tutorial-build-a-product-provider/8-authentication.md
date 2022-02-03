@@ -100,7 +100,8 @@ const Express = require('express'),
       authenticate = require('./auth'),
       app = Express();
       
-app.use(authenticate);
+// Require authentication execept in our development environment
+if (process.env.NODE_ENV !== 'development') app.use(authenticate);
 ```
 
 [auth-spec]: /docs/product-provider/authentication
