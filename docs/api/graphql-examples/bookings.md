@@ -31,4 +31,4 @@ query searchBookings($organizationId: ID!, $limit: Int = 5) {
         }
     }
 }
-``
+```
