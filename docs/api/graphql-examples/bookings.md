@@ -14,7 +14,7 @@ query searchBookings($organizationId: ID!, $limit: Int = 5) {
         bookings(
             organizationId: $organizationId,    # Organization to get bookings for
             sort: CREATED_AT,                   # Gets the most recently created bookings
-            dir: DIRECTION_DESC,     
+            dir: DESC,     
             offset: 0,                          # Get the first results
             limit: $limit ) {                   # Limit the results
             
