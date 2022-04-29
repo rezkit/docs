@@ -4,13 +4,16 @@ sidebar_position: 1
 
 # Webhook Setup
 
-Webhooks can be set up using either GraphQL mutations, or RESTHooks.
+Webhooks can be set up using either GraphQL mutations, or [RESTHooks](https://resthooks.org/).
 A webhook can subscribe to one or more event types, including wildcard events to get all event types within a group.
 
-
-## Requirements
+## Requirements & Limits
 
 Webhooks **must use https**, non https URLs for webhook endpoints will be rejected.
+Invalid, expired, self-signed and untrusted TLS certificates will also be rejected.
+
+Webhooks have a timeout of 10 seconds. If you require longer to process a webhook event consider forwarding the event
+to a background queue for processing.
 
 ## Subscribing To Events
 
