@@ -13,8 +13,8 @@ const config = {
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
-  organizationName: 'mrzen', // Usually your GitHub org/user name.
-  projectName: 'rezkit-docs', // Usually your repo name.
+  organizationName: 'rezkit', // Usually your GitHub org/user name.
+  projectName: 'docs', // Usually your repo name.
 
   presets: [
     [
@@ -24,7 +24,7 @@ const config = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
-          editUrl: 'https://github.com/mrzen/rezkit-docs/tree/master/',
+          editUrl: 'https://github.com/rezkit/docs/tree/master/',
           showLastUpdateTime: true
         },
         blog: {
@@ -52,9 +52,17 @@ const config = {
         items: [
           {
             type: 'doc',
-            docId: 'intro',
+            docId: 'platform/intro',
             position: 'left',
-            label: 'Documentation',
+            label: 'Platform',
+            sidebarId: 'platform'
+          },
+          {
+            type: 'doc',
+            docId: 'tours/intro',
+            position: 'left',
+            label: 'Tours',
+            sidebarId: 'tours'
           },
           {
             href: 'https://github.com/mrzen/rezkit-docs',
@@ -67,15 +75,15 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
+            title: 'Guides',
             items: [
               {
                 label: 'Connect to the API',
-                to: '/docs/api/setup',
+                to: '/docs/platform/api/setup',
               },
               {
                 label: 'Build a Product Provider',
-                to: '/docs/product-provider/tutorial-build-a-product-provider/introduction',
+                to: '/docs/platform/product-provider/tutorial-build-a-product-provider/introduction',
               },
             ],
           },

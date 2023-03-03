@@ -104,4 +104,4 @@ const Express = require('express'),
 if (process.env.NODE_ENV !== 'development') app.use(authenticate);
 ```
 
-[auth-spec]: /docs/product-provider/authentication
+[auth-spec]: /docs/platform/product-provider/authentication
