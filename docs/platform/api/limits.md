@@ -6,10 +6,6 @@ sidebar_position: 3
 
 The following limits are imposed within the API.
 
-## Rate Limiting
-
-API Rate Limits TBC.
-
 ## GraphQL Complexity
 
 Limits on GraphQL operations are based on complexity. The more data you request in a single operation, 
@@ -36,7 +32,7 @@ and the limit which it has exceeded:
 {
   "errors": [
     {
-      "message": "Specified query complexity of 2893 exceeds limit of 2000"
+      "message": "Specified query complexity of 3893 exceeds limit of 3000"
     }
   ]
 }

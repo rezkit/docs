@@ -1,0 +1,54 @@
+---
+sidebar_position: 2
+title: Holidays
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+
+## Listing Holidays
+
+
+### Example
+
+<Tabs groupId="tour-client-lang">
+
+<TabItem value="js" label="JavaScript">
+
+```js
+import TourManager from '@rezkit/tours';
+
+const client = new TourManager({ api_key: YOUR_API_KEY });
+
+// Lists return Paginated responses of the given item type.
+// In this case, Paginated<Holiday>
+const holidays = await client.holidays.list({
+   limit: 10,
+   sort: 'name',
+});
+```
+
+</TabItem>
+
+<TabItem value="php" label="PHP">
+
+```php
+use RezKit\Tours\Client;
+
+$client = new TourManager( YOUR_API_KEY );
+
+$holidays = $client->holidays()->list();
+
+// List responses can be iterated over and pagination happens automatically.
+foreach ($holidays as $holiday) {
+    echo $holiday->getName() . "\n";
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+
+## Retriving and Modifying Holidays

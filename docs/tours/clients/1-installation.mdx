@@ -1,0 +1,65 @@
+---
+sidebar_position: 1
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Installation
+
+Install a library to simplify access to Tour data.
+
+Official Clients:
+
+* [JavaScript][client-js]
+* [PHP][client-php]
+
+<Tabs groupId="tour-client-lang">
+<TabItem value="js" label="JavaScript">
+
+```shell
+npm i @rezkit/tours
+```
+
+</TabItem>
+
+<TabItem value="php" label="PHP">
+
+```shell
+composer require rezkit/tours
+```
+
+</TabItem>
+</Tabs>
+
+# Configuration
+
+You'll need an API Key for each Organization you want to access Tour Manager data for.
+
+<Tabs groupId="tour-client-lang">
+
+<TabItem value="js" label="JavaScript">
+
+```js
+import TourManager from '@rezkit/tours';
+
+const client = new TourManager({ api_key: YOUR_API_KEY });
+```
+
+</TabItem>
+
+<TabItem value="php" label="PHP">
+
+```php
+use RezKit\Tours\Client;
+
+$client = new Client($apiKey);
+```
+
+</TabItem>
+
+</Tabs>
+
+
+[client-js]: https://github.com/rezkit/tours-js
+[client-php]: https://github.com/rezkit/tours-php

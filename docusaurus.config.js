@@ -95,9 +95,13 @@ const config = {
                 href: 'https://stackoverflow.com/questions/tagged/rezkit',
               },
               {
-                label: 'Twitter',
-                href: 'https://twitter.com/rezkit',
+                label: 'RezKit',
+                href: 'https://rezkit.app/'
               },
+              {
+                label: 'Dashboard',
+                href: 'https://dashboard.rezkit.app/'
+              }
             ],
           },
           {
@@ -115,6 +119,7 @@ const config = {
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
+        additionalLanguages: ['php']
       },
     }),
 };
