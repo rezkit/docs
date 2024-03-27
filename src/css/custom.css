@@ -88,13 +88,29 @@ h1, h2, h3, h4, h5, h6 {
 
 .footer {
   position: relative;
+  padding-bottom: 5%;
   margin-top: 5%;
   z-index: 20;
+}
+
+.footer__links {
+  margin-bottom: 4rem;
 }
 
 .footer__title {
   --ifm-footer-title-color: #C74394;
   --ifm-h4-font-size: 22px;
+
+  letter-spacing: 1.7px;
+}
+
+.footer__copyright {
+  background: #1C1431;
+  position: absolute;
+  padding: 15px 0;
+  width: 100%;
+  bottom: 0;
+  left: 0;
 }
 
 .footer--dark {
