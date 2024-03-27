@@ -4,9 +4,6 @@ import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import styles from './index.module.css';
-// @ts-ignore
-import stylesX from './styles.module.scss';
-
 
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
@@ -23,9 +20,6 @@ function HomepageHeader() {
           </Link>
         </div>
       </div>
-      <main className={stylesX.main}>
-        <article>Lorem Ipsum</article>
-      </main>
     </header>
   );
 }

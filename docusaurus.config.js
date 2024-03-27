@@ -46,10 +46,11 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'RezKit',
         logo: {
           alt: 'RezKit Logo',
-          src: 'img/logo.svg',
+          src: 'img/rezkit-core-logo.svg',
+          srcDark: 'img/rezkit-core-logo-light.svg',
+          height: 55
         },
         items: [
           {
