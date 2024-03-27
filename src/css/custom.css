@@ -1,3 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500&display=swap');
+
+@font-face {
+  font-family: Outfit;
+  src: url("../../static/fonts/Outfit-Regular.eot");
+  src:
+      url("../../static/fonts/Outfit-Regular.eot?#iefix") format("embedded-opentype"),
+      url("../../static/fonts/Outfit-Regular.woff") format("woff"),
+      url("../../static/fonts/Outfit-Regular.ttf") format("truetype"),
+      url("../../static/fonts/Outfit-Regular.svg#Outfit-Regular") format("svg");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Outfit SemiBold";
+  src: url("../../static/fonts/Outfit-Medium.eot");
+  src:
+      url("../../static/fonts/Outfit-Medium.eot?#iefix") format("embedded-opentype"),
+      url("../../static/fonts/Outfit-Medium.woff") format("woff"),
+      url("../../static/fonts/Outfit-Medium.ttf") format("truetype"),
+      url("../../static/fonts/Outfit-Medium.svg#Outfit-Medium") format("svg");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
 /**
  * Any CSS included here will be global. The classic template
  * bundles Infima by default. Infima is a CSS framework designed to
@@ -15,10 +43,17 @@
   --ifm-color-primary-lightest: #E4A5CC;
   --ifm-code-font-size: 95%;
   --ifm-navbar-height: 75px;
+  --ifm-font-family-base: Outfit;
+  --ifm-heading-font-family: "Outfit SemiBold";
+  --ifm-font-family-monospace: Outfit;
 }
 
 :root, h2, h3, h4, h5 {
-  font-family: "Noto Sans", sans-serif;
+  font-family: Outfit, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: 2.5px;
 }
 
 .navbar {
@@ -53,6 +88,7 @@
 
 .footer {
   position: relative;
+  margin-top: 5%;
   z-index: 20;
 }
 

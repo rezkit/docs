@@ -4,10 +4,11 @@
  */
 
 .heroBanner {
-  padding: 4rem 0 15%;
   text-align: center;
   position: absolute;
   overflow: hidden;
+  margin: 100px 0 200px;
+  min-height: 80vh;
   left: 0;
   right: 0;
   bottom: 0;
@@ -23,6 +24,7 @@
 }
 
 .heroBanner div {
+  padding-bottom: 30px;
   position: relative;
   z-index: 30;
 }
@@ -37,12 +39,6 @@
   bottom: 0;
   top: 0;
   z-index: 5;
-}
-
-@media screen and (max-width: 966px) {
-  .heroBanner {
-    padding: 2rem 0 25%;
-  }
 }
 
 .buttons {
