@@ -1,3 +1,7 @@
+/*------------------------------------------------------------------------------
+// Fonts
+//----------------------------------------------------------------------------*/
+
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500&display=swap');
 
 @font-face {
@@ -33,6 +37,7 @@
  */
 
 /* You can override the default Infima variables here. */
+
 :root {
   --ifm-color-primary: #84288E;
   --ifm-color-primary-dark: #7A1685;
@@ -56,25 +61,10 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 2.5px;
 }
 
-.navbar {
-  --ifm-navbar-background-color: rgba(255, 255, 255, .8);
-  --ifm-navbar-shadow: 0 0 20px rgba(0, 0, 0, .1);
-  --ifm-navbar-padding-vertical: 15px;
-  --ifm-navbar-height: 100px;
-
-  backdrop-filter: blur(10px);
-  margin: 0 0 20px;
-}
-
-.navbar__inner,
 .main-wrapper {
   max-width: 1600px;
   margin: 0 auto;
   width: 100%;
-}
-
-.navbar__logo {
-  height: 55px;
 }
 
 .main-wrapper {
@@ -83,38 +73,84 @@ h1, h2, h3, h4, h5, h6 {
 
 .hero__title,
 .hero__subtitle {
-  text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+  text-shadow: 4px 4px 10px rgba(0, 0, 0, .4);
 }
+
+/*------------------------------------------------------------------------------
+// SASS
+//----------------------------------------------------------------------------*/
+
+@import "~bootstrap/scss/bootstrap-utilities";
+@import "~bootstrap/scss/bootstrap-grid";
+
+/*-- Root items --*/
+@import "../assets/scss/template/base/mixin.scss";
+
+/*------------------------------------------------------------------------------
+// Navigation
+//----------------------------------------------------------------------------*/
+
+.navbar {
+  --ifm-navbar-background-color: rgba(255, 255, 255, .8);
+  --ifm-navbar-shadow: 0 0 20px rgba(0, 0, 0, .1);
+  --ifm-navbar-padding-vertical: 15px;
+  --ifm-navbar-height: 100px;
+
+  backdrop-filter: blur(10px);
+  margin: 0 0 20px;
+
+  @include element("inner") {
+    max-width: 1600px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  @include element("logo") {
+    height: 55px;
+  }
+}
+
+/*------------------------------------------------------------------------------
+// Footer
+//----------------------------------------------------------------------------*/
 
 .footer {
   position: relative;
   padding-bottom: 5%;
   margin-top: 5%;
   z-index: 20;
-}
 
-.footer__links {
-  margin-bottom: 4rem;
-}
+  /*==============================================================================
+  // Elements
+  //============================================================================*/
 
-.footer__title {
-  --ifm-footer-title-color: #C74394;
-  --ifm-h4-font-size: 22px;
+  @include element("title") {
+    --ifm-footer-title-color: #C74394;
+    --ifm-h4-font-size: 22px;
 
-  letter-spacing: 1.7px;
-}
+    letter-spacing: 1.7px;
+  }
 
-.footer__copyright {
-  background: #1C1431;
-  position: absolute;
-  padding: 15px 0;
-  width: 100%;
-  bottom: 0;
-  left: 0;
-}
+  @include element("links") {
+    margin-bottom: 4rem;
+  }
 
-.footer--dark {
-  --ifm-footer-background-color: #0C0821;
+  @include element("copyright") {
+    background: #1C1431;
+    position: absolute;
+    padding: 15px 0;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+  }
+
+  /*==============================================================================
+  // Modifiers
+  //============================================================================*/
+
+  @include modifier("dark") {
+    --ifm-footer-background-color: #0C0821;
+  }
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -133,7 +169,7 @@ html[data-theme='dark'] {
 
   .hero__title,
   .hero__subtitle {
-    text-shadow: 4px 4px 10px rgba(255, 255, 255, 0.4);
+    text-shadow: 4px 4px 10px rgba(255, 255, 255, .4);
   }
 }
 

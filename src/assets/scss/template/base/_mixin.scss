@@ -1,0 +1,223 @@
+/*==============================================================================
+// File:        _mixins.scss
+// Package:     Tour Manager - Vue3 - RezKit
+// Synopsis:    Main mixins & reusable items - SASS
+//============================================================================*/
+@use "sass:math";
+
+/*------------------------------------------------------------------------------
+// Mixins
+//----------------------------------------------------------------------------*/
+
+/*-- Insert drop shadow --*/
+@mixin insert-shadow($hOff, $vOff, $sBlur, $spread, $sColour) {
+  -webkit-box-shadow: $hOff $vOff $sBlur $spread $sColour;
+  -moz-box-shadow: $hOff $vOff $sBlur $spread $sColour;
+  box-shadow: $hOff $vOff $sBlur $spread $sColour
+}
+
+/*-- Default transition setup --*/
+@mixin insert-transition($property, $duration, $type, $delay) {
+  -webkit-transition: $property $duration $type $delay;
+  -moz-transition: $property $duration $type $delay;
+  -ms-transition: $property $duration $type $delay;
+  -o-transition: $property $duration $type $delay;
+  transition: $property $duration $type $delay
+}
+
+/*-- Default gradient setup --*/
+@mixin linear-gradient($start, $end) {
+  background: $start;
+  background: -moz-linear-gradient(top,  $start 0%, $end 100%);
+  background: -webkit-linear-gradient(top,  $start 0%,$end 100%);
+  background: linear-gradient(to bottom,  $start 0%,$end 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$start', endColorstr='$end', GradientType = 0);
+}
+
+/*-- Helper for central alignment --*/
+@mixin push--auto {
+  margin: {
+    right: auto;
+    left: auto
+  }
+}
+
+/*-- Display flex & align central --*/
+@mixin flex--center {
+  -webkit-align-items: center;
+  justify-content: center;
+  display: -webkit-flex;
+  align-items: center;
+  display: flex
+}
+
+/*-- Display flex & align to the end --*/
+@mixin flex--end {
+  -webkit-align-items: flex-end;
+  justify-content: flex-end;
+  display: -webkit-flex;
+  align-items: flex-end;
+  display: flex
+}
+
+/*-- Set font including weight & style --*/
+@mixin example-font($weight, $style) {
+  font-family: "example";
+  @if $weight == 700 and $style == "normal" {
+    font-style: normal;
+    font-weight: 700;
+  }
+  @else if $weight == 700 and $style == "italic" {
+    font-style: italic;
+    font-weight: 700;
+  }
+  @else if $weight == 400 and $style == "normal" {
+    font-style: normal;
+    font-weight: 400;
+  }
+  @else if $weight == 400 and $style == "italic" {
+    font-style: italic;
+    font-weight: 400;
+  }
+}
+
+@mixin read-only {
+  &:read-only,
+  &:disabled {
+    @content;
+  }
+}
+
+/*-- Adjoining class --*/
+@mixin adjoin($adjoin) {
+  &.#{$adjoin} {
+    @content;
+  }
+}
+
+/*-- BEM element --*/
+@mixin element($element) {
+  &__#{$element} {
+    @content;
+  }
+}
+
+/*-- BEM modifier --*/
+@mixin modifier($modifier) {
+  &--#{$modifier} {
+    @content;
+  }
+}
+
+/*-- Max width breakpoint --*/
+@mixin media-max-width($max-width) {
+  @media #{(max-width: $max-width)} {
+    @content;
+  }
+}
+
+/*-- Default pseudo configuration --*/
+@mixin pseudo($pos: absolute, $content: "") {
+  content: $content;
+  position: $pos
+}
+
+/*-- Setting responsive ratio --*/
+@mixin responsive-ratio($x,$y, $pseudo: false) {
+  $padding: unquote(($y/$x) * 100 + "%");
+  @if $pseudo {
+    &:before {
+      @include pseudo($pos: relative);
+      padding-top: $padding;
+      width: 100%
+    }
+  }
+  @else {
+    padding-top: $padding
+  }
+}
+
+/*-- Setting a placeholder on input fields --*/
+@mixin input-placeholder {
+  &.placeholder { @content; }
+  &:-moz-placeholder { @content; }
+  &::-moz-placeholder { @content; }
+  &:-ms-input-placeholder { @content; }
+  &::-webkit-input-placeholder { @content; }
+}
+
+/*-- Helping animation & transitions --*/
+@mixin hardware($backface: true, $perspective: 1000) {
+  @if $backface {
+    backface-visibility: hidden
+  }
+  perspective: $perspective;
+}
+
+/*-- Hide content if "max-width" reached --*/
+@mixin truncate($truncation-boundary) {
+  max-width: $truncation-boundary;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden
+}
+
+/*--------------------------------------------------------------------------------------
+//  PRECISE CONTROL OVER RESPONSIVE TYPOGRAPHY FOR SASS
+//  ---------------------------------------------------
+//  Indrek Paas @indrekpaas
+//
+//  Inspired by Mike Riethmuller's Precise control over responsive typography
+//  https://www.madebymike.com.au/writing/precise-control-responsive-typography/
+//
+//  Borrowed `strip-unit` function from Hugo Giraudel
+//  https://css-tricks.com/snippets/sass/strip-unit-function/
+//
+//  02.04.2018 Remove `screen` keyword from media queries
+//  11.08.2016 Remove redundant `&` self-reference
+//  31.03.2016 Remove redundant parenthesis from output
+//  02.10.2015 Add support for multiple properties
+//  24.04.2015 Initial release
+//-------------------------------------------------------------------------------------*/
+
+@mixin fluid-prop($properties, $min-vw, $max-vw, $min-value, $max-value, $boolean: false) {
+  @if $boolean {
+    @each $property in $properties {
+      #{$property}: $max-value;
+    }
+  }
+  @else {
+    @each $property in $properties {
+      #{$property}: $min-value;
+    }
+  }
+
+  @media (min-width: $min-vw) {
+    @each $property in $properties {
+      #{$property}: calc(#{$min-value} + #{strip-unit($max-value - $min-value)} * (100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)});
+    }
+  }
+
+  @media (min-width: $max-vw) {
+    @each $property in $properties {
+      #{$property}: $max-value;
+    }
+  }
+}
+
+@function strip-unit($number) {
+  @if type-of($number)=="number"and not unitless($number) {
+    @return  math.div($number, ($number * 0 + 1))
+  }
+  @return $number;
+}
+
+@mixin page-padding($context: 12) {
+  padding-right: 20px;
+  padding-left: 20px;
+
+  @media (min-width: $screen-md) {
+    padding-right: percentage(1/$context);
+    padding-left: percentage(1/$context);
+  }
+}

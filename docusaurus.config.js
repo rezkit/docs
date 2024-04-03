@@ -34,7 +34,7 @@ const config = {
             'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          customCss: require.resolve('./src/css/custom.scss'),
         },
       }),
     ],
@@ -66,6 +66,11 @@ const config = {
             position: 'left',
             label: 'Tours',
             sidebarId: 'tours'
+          },
+          {
+            position: 'right',
+            label: 'Contact',
+            href: '/contact'
           },
           {
             href: 'https://github.com/mrzen/rezkit-docs',
