@@ -34,20 +34,23 @@ const config = {
             'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          customCss: require.resolve('./src/css/custom.scss'),
         },
       }),
     ],
   ],
 
+  plugins: ['docusaurus-plugin-sass'],
+
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'RezKit',
         logo: {
           alt: 'RezKit Logo',
-          src: 'img/logo.svg',
+          src: 'img/rezkit-core-logo.svg',
+          srcDark: 'img/rezkit-core-logo-light.svg',
+          height: 55
         },
         items: [
           {
@@ -63,6 +66,11 @@ const config = {
             position: 'left',
             label: 'Tours',
             sidebarId: 'tours'
+          },
+          {
+            position: 'right',
+            label: 'Contact',
+            href: '/contact'
           },
           {
             href: 'https://github.com/mrzen/rezkit-docs',

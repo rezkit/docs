@@ -4,20 +4,52 @@
  */
 
 .heroBanner {
-  padding: 4rem 0;
   text-align: center;
-  position: relative;
+  position: absolute;
   overflow: hidden;
+  margin: 100px 0 200px;
+  min-height: 80vh;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("../../static/img/rezkit-doc-bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top center;
 }
 
-@media screen and (max-width: 966px) {
-  .heroBanner {
-    padding: 2rem;
-  }
+.heroBanner div {
+  padding-bottom: 30px;
+  position: relative;
+  z-index: 30;
+}
+
+.heroBanner:after {
+  position: absolute;
+  content: "";
+  display: block;
+  background: rgba(132, 40, 142, .65);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  z-index: 5;
 }
 
 .buttons {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+
+html[data-theme='dark'] {
+  .heroBanner:after {
+    background: rgba(194, 145, 197, .65);
+  }
 }
