@@ -58,14 +58,12 @@ const config = {
             docId: 'platform/intro',
             position: 'left',
             label: 'Platform',
-            sidebarId: 'platform'
           },
           {
             type: 'doc',
             docId: 'tours/intro',
             position: 'left',
             label: 'Tours',
-            sidebarId: 'tours'
           },
           {
             position: 'right',
