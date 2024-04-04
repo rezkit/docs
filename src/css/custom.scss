@@ -116,6 +116,10 @@ h1, h2, h3, h4, h5, h6 {
   backdrop-filter: blur(10px);
   margin: 0 0 20px;
 
+  /*==============================================================================
+  // Elements
+  //============================================================================*/
+
   @include element("inner") {
     max-width: 1600px;
     margin: 0 auto;
@@ -124,6 +128,28 @@ h1, h2, h3, h4, h5, h6 {
 
   @include element("logo") {
     height: 55px;
+  }
+
+  /*==============================================================================
+  // Modifiers
+  //============================================================================*/
+
+  @include adjoin("navbar-sidebar--show") {
+    z-index: var(--ifm-z-index-fixed);
+    position: fixed;
+    height: 100%;
+    top: 0;
+
+    .navbar-sidebar {
+      --ifm-navbar-background-color: #FFF;
+    }
+  }
+
+  @media (max-width: 996px) {
+    @include element("toggle") {
+      position: absolute;
+      right: 15px;
+    }
   }
 }
 
