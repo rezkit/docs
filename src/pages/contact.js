@@ -16,7 +16,7 @@ export default function Contact() {
         window.hbspt.forms.create({
           region: 'eu1',
           portalId: '139578808',
-          formId: '72d66714-b448-431a-b6e0-b5dcfd563acc',
+          formId: '9e22e3c7-b179-47bc-a775-980f2b4f157c',
           target: '#hubspotForm'
         })
       }
