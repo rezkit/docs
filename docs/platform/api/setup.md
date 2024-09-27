@@ -25,12 +25,12 @@ If you think you need a `client_credentials` application [click here][client_cre
 ## Connecting your Application
 Configure your OAuth2 client library with the following settings:
 
-|      Setting      | Value                                 |
-|:-----------------:|:--------------------------------------|
-| Authorization URL | https://rezkit.app/oauth/auth         |
-|     Token URL     | https://api.rezkit.app/oauth/v2/token |
-|     Client ID     | _your client id_                      |
-|   Client Secret   | _your client secret_                  |
+|      Setting      | Value                                   |
+|:-----------------:|:----------------------------------------|
+| Authorization URL | https://dashboard.rezkit.app/oauth/auth |
+|     Token URL     | https://api.rezkit.app/oauth/v2/token   |
+|     Client ID     | _your client id_                        |
+|   Client Secret   | _your client secret_                    |
 
 
 [client_credentials_application]: #

@@ -16,6 +16,8 @@ const config = {
   organizationName: 'rezkit', // Usually your GitHub org/user name.
   projectName: 'docs', // Usually your repo name.
 
+  themes: ["docusaurus-json-schema-plugin"],
+
   presets: [
     [
       'classic',

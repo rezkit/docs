@@ -1,0 +1,183 @@
+---
+title: Holiday Search
+---
+
+## Introduction
+
+RezKit TourManager includes an advanced, live product search API as well as a 
+suite of web components which can be used to build rich product search
+experiences.
+
+This search supports full-text keyword and phrase searching with an advanced and
+tuned lexical ranking model. It provides data aggregations and filters for key
+holdiay properties such as pricing and departure dates.
+
+The search automatically filters results in realtime based on current inventory
+and pricing rules, ensuring the products shown to customers are always live
+and up-to-date.
+
+## Search API
+
+The search API is located at `https://tours.api.rezkit.app/holidays/search`.
+This is available publicly, does not require authentication credentials, and supports CORS. 
+This allows for search API calls to be made directly from the browser for a live user experience.
+
+All search options are specified via **URL Query Parameters**.
+[Some filter rules are applied by default](#default-rules)
+
+The following parameters are supported
+
+| Parameter Name | Example | Description |
+|:--------------:|:--------------|:------------|
+| `k` | rezkit | **(required)** Organization search key. This is required on all searches to identify your organization for search. |
+| `ccy` | USD  | **(required)** ISO Currency code. All searches require a currency code and return only pricing in that currency. |
+| `q` | `q=summer+fun` | Full-text search query. |
+| `s[]` | `s[]=price\|ASC` | **(repeatable)** Result sorting: [More details](#sorting-results) |
+| `i` | `i=50`  | **(integer)** Maximum number of results to return. |
+| `o` |  `o=0`  | **(integer)** Offset of first result to get. |
+| `j` | `j=a` | Search Join mode. Must be either `a` or `d` [More details](#search-join-modes) |
+| `pf` | `pf=300` | **(number)** Minimum price, currency specified by `ccy`. [More details](#filtering-on-price) |
+| `pt` | `pt=800` | **(number)** Maximum price, currency specified by `ccy` [More details](#filtering-on-price) |
+| `df` | `df=2025-01-01` | Earliest date of result to return. [More details](#filtering-on-dates) |
+| `dt` | `dt=2025-12-31` | Latest date of result to return [More details](#filtering-on-dates) |
+| `fh[*]` | `fh[featured]=yes` | Filter on Holiday custom fields. [More details](#filtering-on-custom-fields) |
+| `fd[*]` | `fd[promo]=Flash+Sale` | Filter on Departure custom fields. [More details](#filtering-on-custom-fields) |
+| `hdf` | `hdf=2` | Minimum departure duration in days. |
+| `hdt` | `hdt=7` | Maximum departure duration in days. |
+| `c*[]` | `c0[]=Holiday+Type~Trek~%2D~Walk` | **(repeatable)** Holiday category filters. [More details](#filtering-on-categories) |
+| `l[*][]` | `l[Country][]=Bulgaria` | **(repeatable)** Holiday location filters. [More details](#filtering-on-locations) |
+
+
+## Available Search Options
+
+### Sorting Results
+
+Results can be sorted based on the following, the `s[]` parameter can be repeated
+to set how to break tied results.
+Result sort options are specified as a field name, followed by a pipe (`|`) and
+then either `ASC` or `DESC` to set the sort direction.
+
+:::tip Sorting Full-Text Searches
+When performing full-text searches (using the `q` parameter) it is **highly**
+recommended to always sort using `_score|DESC`. This is applied by default, to ensure
+that the most relevant results are returned first.
+:::
+
+The following fields are available:
+
+* `name` -- Holiday Name (Lexical sorting)
+* `code` -- Holiday Code (Lexical sorting)
+* `price` -- Prices (numeric sorting)
+* `date` -- Departure _start_ dates (chronological sorting)
+* `_score` -- Text-search relevance sorting
+
+:::warning Date & Price Sorting
+It is not possible to sort results by *both* `date` *and* `price`.
+Only one of these two options may be specified.
+:::
+
+
+### Filtering on Price
+
+Prices are specified using the `pf` and `pt` paramters, both of which are optional.
+For a price to be included as a result it must have a value between `pf` and `pt`, inclusive.
+Any price returned by the filter must also match the following rules:
+
+1. It is in the currency specified by `ccy`
+2. The price is marked as "On Sale"
+3. The _element option_ of the price must be marked as a "Leading Price"
+4. The _element_ of the price must be marked as a "Package Element"
+5. The price must be for an available departure in the future.
+
+Where a holiday or departure has mutiple leading prices, a match will be found if at least one
+of the values matches.
+
+### Filtering on Dates
+
+Dates are specified using the `df` and `dt` paramters and supports filtering
+using _RFC3339 Nano_ formatted date-times, supporting up to microsecond precision.
+The time part is optional and will default to midnight UTC if omitted.
+
+When specified the filters apply different rules depending on the type of departure.
+
+For fixed departures, the whole departure must be _within_ the specified dates.
+
+:::tip Example
+  A search with the options `df=2025-10-03&dt=2025-10-28` would match only fixed
+  departures which depart _on or after_ **3rd October 2025**, and return 
+  _on or before_ **28th October 2025**.
+:::
+
+### Filtering on Categories
+Categories are specified in the filters using parameters beginning with `c`,
+followed by a digit. The represents how many levels are above that category.
+
+Top-level categories are specified by the `c0` parameter. Direct children of
+these categories are specified by the `c1` parameter, and so on up to `c3`.
+
+When specifying a category, it is specified using the names of all its
+ancestors, and itself, separated by a tilde (`~`).
+
+For example the "Trekking and Walking" category, a child of the "Activity"
+category would be specified as: `c1[]=Activity~Trekking+and+Walking`.
+The name must be exactly as in Tour Manager, with special characters
+URL-escaped.
+
+The `cX` parameter can be repeated any number of times to add addional filter
+values, the behaviour of which can be altered by the [search join mode](#search-join-modes).
+
+### Filtering on Locations
+
+Locations are specified in filters using their name as well as their category name.
+For example, a location called "Bulgaria" with the category of "Country" would
+be specified as: `l[Country][]=Bulgaria`
+
+The name of the location and its category must match exactly the values in Tour Manager.
+The `l` parameters can be repeated any number of times to add additional filters,
+the behaviour of which can be altered by the [search join mode](#search-join-modes).
+
+### Filtering on [Custom Fields](./custom-fields)
+
+Custom fields can be filtered using the `fh` and `fd` parameters.
+The `fh` parameter controls filtering on _holiday_ custom fields,
+and the `fd` parameter controls filtering on the _departure_ custom fields.
+
+:::warning Matching
+Custom fields support filtering for an exact match against a specific
+value **only**, checking that the field is present on the result _and_ has the exact
+same value as specified by the search filter.
+:::
+
+### Search Join Modes
+
+The search API supports two different join modes. This controls how the various
+filter options are combined to get a set of results.
+These are set using the `j` parameter which can have either the value `a` for
+adjoined, or `d` for disjointed.
+If not specified the `j` parameter defaults to `a`.
+This option primarily controls how categories and locations are filtered.
+
+#### Adjoined Mode
+In adjoined mode, filter options are combined using an "and" clause.
+This means that for a result to match, it must have *all* the specified values.
+Thus, adding more filter options to your search will narrow down the results returned.
+
+This applies within a filter option, such as `c0` or `l[Country]`, with different
+filters always being combined using an "and" clause.
+
+#### Disjointed Mode
+In disjointed mode, filter options are combined using an "or" clause.
+This means that for a result to match, it msut contain *at least one* of the specified values.
+
+This applies within a filter option, such as `c0` or `l[Country]`, with different
+filters always being combined using an "and" clause.
+
+### Default rules
+
+The following rules are applied to holiday searches by default and cannot be
+disabled:
+
+* Holidays, Versions, and Departures **must** all be published.
+* Holidays **must** be marked as "visible in search."
+* Departures **must** be in the future
+* Prices **must** be "On Sale"
