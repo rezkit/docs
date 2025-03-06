@@ -1,15 +1,14 @@
 Introduction to Dynamic Attributes
-=====================
+==================================
 
-**Dynamic Attribute**s, short for _Custom Additional Key Extensions_, are a feature of
-RezKit. Dynamic Attributes allow RezKit's data models to be extended and customised by both
+**Dynamic Attributes** allow RezKit's data models to be extended and customised by both
 users as well as systems connected to RezKit, such as product providers.
 
-**Dynamic Attribute**s are a powerful tool for powering your workflows as well as for
+**Dynamic Attribute**s are a powerful tool for driving your workflows as well as for
 managing additional compliance requirements.
 
-**Dynamic Attribute** Features
------------------
+Dynamic Attribute Features
+--------------------------
 
 * Dynamic Attributes can be created both by RezKit users as well as by connected systems,
   including product providers which can use Dynamic Attributes to request additional properties
@@ -18,13 +17,13 @@ managing additional compliance requirements.
   data with a known deadline from which workflows can be driven.
 
 
-**Dynamic Attribute** Types
---------------
+Dynamic Attribute Types
+-----------------------
 
-**Dynamic Attribute**s come in five base flavours, which can be further enhanced and
+Dynamic Attributes come in five base flavours, which can be further enhanced and
 decorated.
 
-The base types of **Dynamic Attribute**s are:
+The base types of Dynamic Attributes are:
 
 * Text
 * Number
@@ -32,17 +31,19 @@ The base types of **Dynamic Attribute**s are:
 * Boolean
 * Section
 
-With the following exceptions, each **Dynamic Attribute** can hold a single value:
+With the following exceptions, each Dynamic Attribute can hold a single value:
 
-1. Selection **Dynamic Attribute**s can be set to allow more than one option to be selected.
-2. Section **Dynamic Attribute**s hold no value, but instead group values for other cakes
+1. Selection attributes can be set to allow more than one option to be selected.
+2. Section attributes hold no value, but instead group values for other cakes
    under a shared heading.
 
 ### Enhanced **Dynamic Attribute** types
 
 Some of the basic types support the use of enhanced input types, allowing for
-powerful control to build user interfaces for managing these data.
+powerful control to build screens for managing these data.
 
 These include various ways to pick choices for a _Selection_, as well as some
-special-purpose inputs for _Text_. For example, the `transport` input allows for
-the collection of a multi-segemtn transport itinerary.
+special-purpose inputs for _Text_. For example, the `telephone` input allows for
+the collection of a telephone number.
+
+Check the [reference page](type-reference) for full details.
