@@ -1,7 +1,7 @@
-CAKEs & Product Providers
+Dynamic Attributes & Product Providers
 =========================
 
-[Product Providers][ref:providers] can use **CAKE**s to request additional
+[Product Providers][ref:providers] can use **Dynamic Attribute**s to request additional
 information about the passengers making a reservation, allowing them to fulfil
 additional compliance and business needs in a seamless, flexible way that
 integrates fully into the RezKit platform.
@@ -17,7 +17,7 @@ Product Providers can specify their additional data requirements on a
 per-product basis. Meaning that you can specify both requirements that apply to
 all products, or ones which only apply to specific products.
 
-When defining CAKEs for a product, the CAKEs will be applied to *all* passengers
+When defining Dynamic Attributes for a product, the Dynamic Attributes will be applied to *all* passengers
 on any reservation for that product.
 
 ### Where to put Definitions
@@ -37,7 +37,7 @@ product_ at a time.
 The full definition of the `attributes` property is provided by [this JSON
 schema][attributes-schema]
 
-CAKEs are presented in the order in which they are provided in your `attributes`
+Dynamic Attributes are presented in the order in which they are provided in your `attributes`
 array.
 
 ### Example
@@ -101,7 +101,7 @@ Reciving Attribute Values
 -------------------------
 
 Once you've defined the attributes, RezKit will convert these definitions into a
-set of **CAKE**s for each passenger assigned to a reservation for your product.
+set of **Dynamic Attribute**s for each passenger assigned to a reservation for your product.
 
 :::note
 RezKit re-checks the attribute definitions for a product whenever a passenger is
@@ -109,7 +109,7 @@ allocated to a slot on a reservation.
 :::
 
 When submitting a reservation confirmation request, or a reservation amendment
-request, the current CAKE values will be collected and converted to a JSON
+request, the current Dynamic Attribute values will be collected and converted to a JSON
 object. 
 The JSON object's structure is taken from the structure of the attributes.
 The object keys will use the `name` property of the attribute.
@@ -162,7 +162,7 @@ RezKit would provide the following `attributes` object for a passenger:
 ### Passengers with multiple reservations
 
 When a passenger is allocated to multiple reservations for the same provider,
-common attributes are merged into a single CAKE based on their name and path.
+common attributes are merged into a single Dynamic Attribute based on their name and path.
 
 This means that if you define an attribute with the same path (e.g. `foo.bar`) on
 multiple products, users will be presented with a single input that collects a
