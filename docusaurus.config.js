@@ -57,7 +57,7 @@ const config = {
         items: [
           {
             type: 'doc',
-            docId: 'user_guide/intro',
+            docId: 'user_guide/user_guide',
             position: 'left',
             label: 'User Guide',
             sidebarId: 'user_guide'
