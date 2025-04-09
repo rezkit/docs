@@ -57,17 +57,22 @@ const config = {
         items: [
           {
             type: 'doc',
-            docId: 'platform/intro',
+            docId: 'user_guide/intro',
             position: 'left',
-            label: 'Platform',
-            sidebarId: 'platform'
+            label: 'User Guide',
+            sidebarId: 'user_guide'
           },
           {
             type: 'doc',
-            docId: 'tours/intro',
+            docId: 'developer/intro',
             position: 'left',
-            label: 'Tours',
-            sidebarId: 'tours'
+            label: 'Developer Docs',
+            sidebarId: 'developer'
+          },
+          {
+            position: 'right',
+            label: 'rezkit.com',
+            href: 'https://rezkit.com'
           },
           {
             position: 'right',
@@ -88,12 +93,15 @@ const config = {
             title: 'Guides',
             items: [
               {
+                label: 'User Guide',
+                to: '/docs/user_guide',
+              },              {
                 label: 'Connect to the API',
-                to: '/docs/platform/api/setup',
+                to: '/docs/developer/api/setup',
               },
               {
                 label: 'Build a Product Provider',
-                to: '/docs/platform/product-provider/tutorial-build-a-product-provider/introduction',
+                to: '/docs/developer/product-provider/tutorial-build-a-product-provider/introduction',
               },
             ],
           },

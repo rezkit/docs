@@ -49,41 +49,6 @@ Called after a reservation is cancelled.
 
 Called after a reservation was attempted to be confirmed or cancelled, but the provider refused the change.
 
-[//]: # (## Transactions)
-
-[//]: # ()
-[//]: # (Payload Schema: Transaction)
-
-[//]: # ()
-[//]: # (### `booking.transaction.created`)
-
-[//]: # ()
-[//]: # (Called after any new transaction is created.)
-
-[//]: # ()
-[//]: # (### `booking.transaction.confirmed`)
-
-[//]: # ()
-[//]: # (Called after a transaction has been confirmed.)
-
-[//]: # ()
-[//]: # (### `booking.transaction.authorized`)
-
-[//]: # ()
-[//]: # (Called after a transaction has been authorized &#40;pre-auth&#41;.)
-
-[//]: # ()
-[//]: # (### `booking.transaction.void`)
-
-[//]: # ()
-[//]: # (Called after a transaction has been voided.)
-
-[//]: # ()
-[//]: # (### `booking.transaction.failed`)
-
-[//]: # ()
-[//]: # (Called after a transaction has failed.)
-
 ## Customers
 
 ### `customer.created`
