@@ -80,7 +80,7 @@ which decides if the request is accepted.
 :::
 
 You can find more detail about how 
-product providers work in our [detailed guide](../product-provider/introduction)
+product providers work in our [detailed guide](../../../../docs/developer/product-provider/introduction)
 
 
 ## Transactions
