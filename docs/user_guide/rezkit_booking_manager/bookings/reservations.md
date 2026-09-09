@@ -8,7 +8,7 @@ Product Reservations
 
 Product Reservations are the specific instances of a Product on a Booking. They are added to the customers booking when they book online or you can add Products to the booking within RezKit.
 
-Within RezKit you can browse your products to create Product Reservation for a booking. Products can come from RezKit Product Manager or from other systems via a Product Provider.
+Within RezKit you can browse your products to create Product Reservation for a booking. Products can come from RezKit Tour Manager or from other systems via a Product Provider.
 
 Products could be tours, packages, accommodation, flights or more. Different products types may look and behave differently in RezKit. Products can have fixed dates or can have fixed duration and take place on any date within a date range specified on the product.
 
