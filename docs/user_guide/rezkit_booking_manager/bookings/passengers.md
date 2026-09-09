@@ -8,7 +8,7 @@ Passengers
 These are the people travelling on the booking. In the Passengers section of a booking you can view and update information specific to each passenger. You can update their names, contact information and travel specific information such as passport details.
 
 ## Custom Passenger Information
-RezKit enables you to collect custom passenger information depending on the Products they have booked. You can manage which information is required for your products in RezKit Product Manager. If information is required, then fields for this information will be shown with each Passenger. For example, you may need to collect someones height because they are taking part on a cycling trip and you need to provide an appropiate sized bike. RezKit can show a height field, with an explaination of why you need this information. You can even configure this field to be a number field and give it a description to specify that the information should be provided in centremetres.
+RezKit enables you to collect custom passenger information depending on the Products they have booked. You can manage which information is required for your products in RezKit Tour Manager. If information is required, then fields for this information will be shown with each Passenger. For example, you may need to collect someones height because they are taking part on a cycling trip and you need to provide an appropiate sized bike. RezKit can show a height field, with an explaination of why you need this information. You can even configure this field to be a number field and give it a description to specify that the information should be provided in centremetres.
 
 ### Custom Passenger Field Types
 You can setup Custom Passenger Fields in the following formats:
